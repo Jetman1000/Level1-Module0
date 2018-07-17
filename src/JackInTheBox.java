@@ -1,9 +1,12 @@
+import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.Random;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,6 +14,8 @@ import javax.swing.JLabel;
 public class JackInTheBox implements ActionListener{
 JackInTheBox(){
 }
+
+
 public static void main(String[] args) {
 
 JackInTheBox JITB=new JackInTheBox();
@@ -61,17 +66,32 @@ private JLabel createLabelImage(String jackInTheBox) {
          return new JLabel();
     }
 }
-
-int i=0;
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-	//System.out.println("hello");
-		i++;
-		if(i==5) {
-			jackInTheBox.showPicture();
-			i=0;
-		}
+private void playSound(String homerWoohoo) { 
+    try {
+         AudioClip sound = JApplet.newAudioClip(getClass().getResource(homerWoohoo));
+         sound.play();
+    } catch (Exception e) {
+         e.printStackTrace();
+    }
 }
 
+
+
+
+@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+	Random r =new Random();
+	int i=r.nextInt(10);
+	for (int t = 0; t < 10; t++) {
+		
+		if(i==t) {
+		showPicture("jackInTheBox.png");
+		playSound("homer-woohoo.wav");
+		}else {
+			
+		}
+	}
+		
+}
 }
