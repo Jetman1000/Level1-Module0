@@ -12,7 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class JackInTheBox implements ActionListener{
+	Random r=new Random();
+	int randomNum=r.nextInt(10);
+	int checker= 0;
+	
 JackInTheBox(){
+	
+
 }
 
 
@@ -81,17 +87,14 @@ private void playSound(String homerWoohoo) {
 @Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-	Random r =new Random();
-	int i=r.nextInt(10);
-	for (int t = 0; t < 10; t++) {
-		
-		if(i==t) {
+	
+	checker++;
+			if(checker==randomNum) {
 		showPicture("jackInTheBox.png");
-		playSound("homer-woohoo.wav");
-		}else {
-			
+		playSound("homer-woohoo.wav");			
 		}
+		
 	}
 		
 }
-}
+
